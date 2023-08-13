@@ -195,7 +195,7 @@ public class BukkitStringMatcher implements StringMatcher {
                 return checkPlayerMatch(players);
 
             } else {
-                throw new CommandException("Invalid group '" + filter + "'.");
+                throw new CommandException("Неверная группа '" + filter + "'.");
             }
         }
 

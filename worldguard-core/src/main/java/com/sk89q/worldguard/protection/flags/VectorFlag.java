@@ -56,7 +56,7 @@ public class VectorFlag extends Flag<Vector3> {
                 }
             }
 
-            throw new InvalidFlagFormatException("Expected 'here' or x,y,z.");
+            throw new InvalidFlagFormatException("Ожидалось 'here' или x,y,z.");
         }
     }
 

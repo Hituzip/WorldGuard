@@ -59,7 +59,7 @@ public abstract class CommandInputContext<T extends Exception> {
         if (sender.isPlayer() && sender instanceof LocalPlayer) {
             return (LocalPlayer) sender;
         } else {
-            throw createException("Not a player");
+            throw createException("Не игрок");
         }
     }
 
@@ -67,7 +67,7 @@ public abstract class CommandInputContext<T extends Exception> {
         try {
             return Integer.parseInt(input);
         } catch (NumberFormatException e) {
-            throw createException("Not a number: " + input);
+            throw createException("Не число: " + input);
         }
     }
 
@@ -75,7 +75,7 @@ public abstract class CommandInputContext<T extends Exception> {
         try {
             return Double.parseDouble(input);
         } catch (NumberFormatException e) {
-            throw createException("Not a number: " + input);
+            throw createException("Не число: " + input);
         }
     }
 

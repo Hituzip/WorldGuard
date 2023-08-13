@@ -95,7 +95,7 @@ public class BukkitWorldConfiguration extends YamlWorldConfiguration {
         loadConfiguration();
 
         if (summaryOnStart) {
-            log.info("Loaded configuration for world '" + worldName + "'");
+            log.info("Загружена конфигурация для мира '" + worldName + "'");
         }
     }
 
@@ -119,7 +119,7 @@ public class BukkitWorldConfiguration extends YamlWorldConfiguration {
             try {
                 set.add(matcherParser.fromInput(input));
             } catch (TargetMatcherParseException e) {
-                log.warning("Failed to parse the block / item type specified as '" + input + "'");
+                log.warning("Не удалось проанализировать тип блока / элемента, указанный как '" + input + "'");
             }
         }
 
@@ -134,9 +134,9 @@ public class BukkitWorldConfiguration extends YamlWorldConfiguration {
         try {
             config.load();
         } catch (IOException e) {
-            log.log(Level.SEVERE, "Error reading configuration for world " + worldName + ": ", e);
+            log.log(Level.SEVERE, "Конфигурация чтения ошибок для мира " + worldName + ": ", e);
         } catch (YAMLException e) {
-            log.severe("Error parsing configuration for world " + worldName + ". ");
+            log.severe("Ошибка при парсинге конфигурации для мира " + worldName + ". ");
             throw e;
         }
 
@@ -323,7 +323,7 @@ public class BukkitWorldConfiguration extends YamlWorldConfiguration {
             EntityType creature = EntityTypes.get(creatureName.toLowerCase());
 
             if (creature == null) {
-                log.warning("Unknown entity type '" + creatureName + "'");
+                log.warning("Неизвестный тип объекта '" + creatureName + "'");
             } else {
                 blockCreatureSpawn.add(creature);
             }
@@ -364,7 +364,7 @@ public class BukkitWorldConfiguration extends YamlWorldConfiguration {
             } else {
                 this.blacklist = blist;
                 if (summaryOnStart) {
-                    log.log(Level.INFO, "({0}) Blacklist loaded with {1} entries.",
+                    log.log(Level.INFO, "({0}) Чёрный список загружен с {1} в.",
                             new Object[]{worldName, blacklist.getItemCount()});
                 }
 
@@ -385,26 +385,26 @@ public class BukkitWorldConfiguration extends YamlWorldConfiguration {
                 }
             }
         } catch (FileNotFoundException e) {
-            log.log(Level.WARNING, "WorldGuard blacklist does not exist.");
+            log.log(Level.WARNING, "Чёрный список WorldGuard отсутствует.");
         } catch (IOException e) {
-            log.log(Level.WARNING, "Could not load WorldGuard blacklist: "
+            log.log(Level.WARNING, "Не удалось загрузить чёрный список WorldGuard: "
                     + e.getMessage());
         }
 
         // Print an overview of settings
         if (summaryOnStart) {
             log.log(Level.INFO, blockTNTExplosions
-                    ? "(" + worldName + ") TNT ignition is blocked."
-                    : "(" + worldName + ") TNT ignition is PERMITTED.");
+                    ? "(" + worldName + ") Воспламенение TNT заблокировано."
+                    : "(" + worldName + ") Воспламенение TNT запрещено.");
             log.log(Level.INFO, blockLighter
-                    ? "(" + worldName + ") Lighters are blocked."
-                    : "(" + worldName + ") Lighters are PERMITTED.");
+                    ? "(" + worldName + ") Зажигалки заблокированы."
+                    : "(" + worldName + ") Зажигалки запрещены.");
             log.log(Level.INFO, preventLavaFire
-                    ? "(" + worldName + ") Lava fire is blocked."
-                    : "(" + worldName + ") Lava fire is PERMITTED.");
+                    ? "(" + worldName + ") Лава заблокирована."
+                    : "(" + worldName + ") лава запрещена.");
 
             if (disableFireSpread) {
-                log.log(Level.INFO, "(" + worldName + ") All fire spread is disabled.");
+                log.log(Level.INFO, "(" + worldName + ") Все пути распространения огня перекрыты.");
             } else {
                 if (!disableFireSpreadBlocks.isEmpty()) {
                     log.log(Level.INFO, "(" + worldName

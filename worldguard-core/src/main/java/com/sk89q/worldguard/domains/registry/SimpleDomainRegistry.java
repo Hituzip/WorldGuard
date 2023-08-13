@@ -54,7 +54,7 @@ public class SimpleDomainRegistry implements DomainRegistry {
     public void register(String name, DomainFactory<?> domain) throws DomainConflictException {
         synchronized (lock) {
             if (initialized) {
-                throw new IllegalStateException("New domains cannot be registered at this time");
+                throw new IllegalStateException("В настоящее время новые домены не могут быть зарегистрированы");
             }
 
             forceRegister(name, domain);
@@ -79,12 +79,12 @@ public class SimpleDomainRegistry implements DomainRegistry {
         checkNotNull(name, "name");
 
         if (!CustomDomain.isValidName(name)) {
-            throw new IllegalArgumentException("Invalid Domain name used.");
+            throw new IllegalArgumentException("Использовано недопустимое доменное имя.");
         }
 
         synchronized (lock) {
             if (domains.containsKey(name)) {
-                throw new DomainConflictException("A domain already exists by the name " + name);
+                throw new DomainConflictException("Домен с таким именем уже существует " + name);
             }
 
             domains.put(name, domain);
@@ -149,7 +149,7 @@ public class SimpleDomainRegistry implements DomainRegistry {
                 CustomDomain domain = getOrCreate(entry.getKey(), entry.getValue(), createUnknown);
                 domainList.add(domain);
             } catch (Throwable e) {
-                log.log(Level.WARNING, "Failed to unmarshal domain for " + entry.getKey(), e);
+                log.log(Level.WARNING, "Не удалось отменить регистрацию домена для " + entry.getKey(), e);
             }
         }
         return domainList;

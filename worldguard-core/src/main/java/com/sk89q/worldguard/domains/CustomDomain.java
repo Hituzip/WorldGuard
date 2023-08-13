@@ -36,7 +36,7 @@ public abstract class CustomDomain implements Domain, ChangeTracked {
 
     public CustomDomain(String name) {
         if (name == null ||!isValidName(name)) {
-            throw new IllegalArgumentException("Invalid Domain name used.");
+            throw new IllegalArgumentException("Использованное недопустимое доменное имя.");
         }
         this.name = name;
     }
