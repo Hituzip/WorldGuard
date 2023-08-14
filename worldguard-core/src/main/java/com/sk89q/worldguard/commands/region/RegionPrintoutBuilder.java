@@ -264,14 +264,14 @@ public class RegionPrintoutBuilder implements Callable<TextComponent> {
     public void appendDomain() {
         builder.append(TextComponent.of("Владельцы: ", TextColor.BLUE));
         addDomainString(region.getOwners(),
-                perms != null && perms.mayAddOwners(region) ? "добавить владельцы" : null,
-                perms != null && perms.mayRemoveOwners(region) ? "удалить владельца" : null);
+                perms != null && perms.mayAddOwners(region) ? "addowner" : null,
+                perms != null && perms.mayRemoveOwners(region) ? "removeowner" : null);
         newline();
 
         builder.append(TextComponent.of("Участники: ", TextColor.BLUE));
         addDomainString(region.getMembers(),
-                perms != null && perms.mayAddMembers(region) ? "добавить участника" : null,
-                perms != null && perms.mayRemoveMembers(region) ? "удалить участника" : null);
+                perms != null && perms.mayAddMembers(region) ? "addmember" : null,
+                perms != null && perms.mayRemoveMembers(region) ? "removemember" : null);
         newline();
     }
 
